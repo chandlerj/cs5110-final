@@ -2,7 +2,7 @@ import copy
 
 from farmgym.v2.entities.Cide import Cide
 from farmgym.v2.entities.Pests import Pests
-from farmgym.v2.entities.Plant_old import Plant
+from farmgym.v2.entities.Plant import Plant
 from farmgym.v2.entities.Pollinators import Pollinators
 from farmgym.v2.entities.Soil import Soil
 from farmgym.v2.entities.Weather import Weather
@@ -10,6 +10,10 @@ from farmgym.v2.entities.Weeds import Weeds
 from farmgym.v2.policy_api import Policy_API, Policy_helper, run_policy_xp
 
 from utils import make_basicfarm, plot_coupling_results, plot_watering_results
+
+import logging
+logging.basicConfig()
+logging.getLogger().setLevel(logging.DEBUG)
 
 field0 = {
     "localization": {"latitude#°": 43, "longitude#°": 4, "altitude#m": 150},
@@ -139,7 +143,7 @@ def xp_coupling(cide_amount, water_amount):
             )
             cumrewards = []
             for n in range(nb_replicate):
-                cr, _ = run_policy_xp(f, copy.deepcopy(policy), max_steps=150, show_actions=True)
+                cr, _ = run_policy_xp(f, copy.deepcopy(policy), max_steps=150, show_actions=False)
                 cr /= scale
                 cumrewards.append(cr)
             results.append({"farm": f.name, "r": cumrewards})
@@ -161,7 +165,7 @@ def xp_watering():
             )
             cumrewards = []
             for n in range(nb_replicate):
-                cr, _ = run_policy_xp(f, copy.deepcopy(policy), max_steps=150, show_actions=True)
+                cr, _ = run_policy_xp(f, copy.deepcopy(policy), max_steps=150, show_actions=False)
                 cr /= scale
                 cumrewards.append(cr)
             results.append({"farm": f.name, "r": cumrewards})
@@ -172,7 +176,7 @@ def xp_watering():
 farms, policy_parameters, results = xp_watering()
 
 plot_watering_results(
-    farms, policy_parameters, results, "Watering policy (daily input in L)"
+   farms, policy_parameters, results, "Watering policy (daily input in L)"
 )
 
 farms, policy_parameters, results = xp_coupling(0.0015, 6)

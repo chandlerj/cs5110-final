@@ -53,25 +53,25 @@ observation-cost:
 intervention-cost:
   Field-0:
     Soil-0:
-      water_discrete: 1
-      water_continuous: 1
+      water_discrete: 0
+      water_continuous: 0
     Plant-0:
       sow: 1
       harvest: 1
       micro_harvest: 1
       remove: 1
 reward-mix:
-     weight_biodiversitycounts: 0.
-     weight_resourceadded: 0.
-     weight_soilmicrolife: 0.
-     weight_harvest: 0.
-     weight_stagecount: 0.
+     weight_biodiversitycounts: 1.
+     weight_resourceadded: 1.
+     weight_soilmicrolife: 1.
+     weight_harvest: 1.
+     weight_stagecount: 1.
      weight_stagetransition: 1.
 final-reward-mix:
-     weight_biodiversitycounts: 0.
-     weight_resourceadded: 0.
-     weight_soilmicrolife: 0.
+     weight_biodiversitycounts: 1.
+     weight_resourceadded: 1.
+     weight_soilmicrolife: 1.
      weight_harvest: 1.
-     weight_stagecount: 0.
-     weight_stagetransition: 0.
+     weight_stagecount: 1.
+     weight_stagetransition: 1.
 

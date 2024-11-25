@@ -8,7 +8,7 @@ from farmgym.v2.scorings.BasicScore import BasicScore
 
 # Daily interventios is set to 2 otherwise farmer
 # does not harvest on days where it has another action
-def make_basicfarm(name, field, entities, farmers=[{"max_daily_interventions": 2}]):
+def make_basicfarm(name, field, entities, farmers=[{"max_daily_interventions": 5}]):
     name = "casestudy/" + name
     name_score = name + "_score.yaml"
     name_init = name + "_init.yaml"
